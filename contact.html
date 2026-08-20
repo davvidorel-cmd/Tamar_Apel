@@ -97,38 +97,51 @@
         .page-header h1 {
             font-family: 'Spectral', serif;
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .page-header h1 span {
+        .page-header h1 em {
+            font-style: italic;
             color: var(--color-primary-light);
         }
 
         .page-header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.9;
+            line-height: 1.8;
         }
 
         .content-section {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
-        .contact-form h2 {
-            font-family: 'Spectral', serif;
-            font-size: 1.8rem;
-            color: var(--color-dark);
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .contact-form .subtitle {
-            color: var(--color-gray);
+        .form-intro {
             text-align: center;
             margin-bottom: 40px;
+        }
+
+        .form-intro h2 {
+            font-family: 'Spectral', serif;
+            font-size: 1.6rem;
+            color: var(--color-dark);
+            margin-bottom: 15px;
+        }
+
+        .form-intro p {
+            color: var(--color-gray);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-form {
+            background: var(--color-light);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
         }
 
         .form-group {
@@ -139,7 +152,7 @@
             display: block;
             margin-bottom: 8px;
             color: var(--color-dark);
-            font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .form-group label .required {
@@ -149,11 +162,12 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
-            border: 1px solid var(--color-gray-light);
+            padding: 14px 16px;
+            border: 1px solid var(--color-gray-border, #dadce0);
             border-radius: 8px;
             font-size: 1rem;
             font-family: inherit;
+            background: var(--color-light);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
@@ -165,7 +179,7 @@
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 140px;
             resize: vertical;
         }
 
@@ -173,13 +187,14 @@
             width: 100%;
             background-color: var(--color-primary);
             color: var(--color-light);
-            padding: 15px 40px;
+            padding: 16px 40px;
             border: none;
             border-radius: 30px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 500;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
         }
 
         .submit-button:hover {
@@ -248,6 +263,10 @@
             .page-header h1 {
                 font-size: 2rem;
             }
+
+            .contact-form {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -280,16 +299,17 @@
     </header>
 
     <section class="page-header">
-        <h1>מביאים את <span>האוקיינוס השקט</span> אליכם</h1>
+        <h1>מביאים את <em>האוקיינוס השקט</em> אליכם</h1>
         <p>העניקו לחברה שלכם ארוע יוצא דופן,<br>המשלב חוויות, שלווה ויופי מקצה העולם,<br>עם סיפור השראה אישי יוצאת דופן,<br>ועם כלים פרקטיים וקלים להתמודדות עם הסטרס בחיי היומיום.</p>
     </section>
 
     <section class="content-section">
-        <div class="contact-form">
-            <h2>צוות, 2 דקות להפלגה...</h2>
-            <p class="subtitle">בואו נתכנן יחד את הפעילות שלכם</p>
-            <p class="subtitle">מלאו את הפרטים ונחזור אליכם בהקדם<br>עם הצעה מותאמת לצרכי הארגון שלכם</p>
+        <div class="form-intro">
+            <h2>צוות, 2 דקות להפלגה...<br>בואו נתכנן יחד את הפעילות שלכם</h2>
+            <p>מלאו את הפרטים ונחזור אליכם בהקדם<br>עם הצעה מותאמת לצרכי הארגון שלכם</p>
+        </div>
 
+        <div class="contact-form">
             <form>
                 <div class="form-group">
                     <label>שם ותפקיד <span class="required">*</span></label>
