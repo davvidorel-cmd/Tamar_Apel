@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>סדנת אנטי סטרס | האוקיינוס השקט שבתוכנו</title>
+    <title>משחקים | האוקיינוס השקט שבתוכנו</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400&family=Sora:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -88,48 +88,72 @@
         }
 
         .content-section {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
-        .anti-stress-content {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        .anti-stress-text h1 {
-            font-family: 'Spectral', serif;
-            font-size: 2.2rem;
-            color: #ffffff;
-            margin-bottom: 25px;
-            line-height: 1.4;
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
         }
 
-        .anti-stress-text p {
-            font-size: 1.1rem;
-            color: #b0c4de;
-            margin-bottom: 15px;
+        .gallery-item:hover {
+            transform: scale(1.02);
         }
 
-        .anti-stress-text .highlight {
-            color: var(--color-primary);
-            font-weight: 500;
-        }
-
-        .anti-stress-text .important {
-            font-size: 1.2rem;
-            color: var(--color-dark);
-            font-weight: 500;
-            margin-top: 20px;
-        }
-
-        .anti-stress-image img {
+        .gallery-item img {
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cta-section {
+            background-color: #0f2847;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Spectral', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #b0c4de;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
         }
 
         .footer {
@@ -179,10 +203,6 @@
         }
 
         @media (max-width: 768px) {
-            .anti-stress-content {
-                grid-template-columns: 1fr;
-            }
-
             .header-container {
                 flex-direction: column;
                 gap: 15px;
@@ -192,6 +212,10 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 15px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -216,7 +240,7 @@
                     <li><a href="about.html">אודות המרצה</a></li>
                     <li><a href="tracks.html">מסלולים לבחירה: 3</a></li>
                     <li><a href="lectures.html">ההרצאות</a></li>
-                    <li><a href="anti-stress.html">סדנת אנטי סטרס</a></li>
+                    <li><a href="games.html">משחקים</a></li>
                     <li><a href="gallery.html">גלרייה</a></li>
                     <li><a href="contact.html">יצירת קשר</a></li>
                 </ul>
@@ -225,18 +249,35 @@
     </header>
 
     <section class="content-section">
-        <div class="anti-stress-content">
-            <div class="anti-stress-text">
-                <h1>סדנת אנטי-סטרס קלה ונעימה</h1>
-                <p><span class="highlight">במשך 30–60 דקות.</span></p>
-                <p>מבוססת על סדרת תרגילי צ'י קונג עתיקה וידועה.</p>
-                <p>התרגול מתבצע בלי מאמץ, או צורך בניסיון קודם, או בגדי ספורט, או נעליים מיוחדות, או ציוד כלשהו!</p>
-                <p class="important">זאת ה機會 להעניק לצוות שלכם כלי פשוט להתמודדות עם סטרס, ולחזור להמשך יום העבודה רעננים, ממוקדים ומלאי אנרגיה.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/20201207_113718-GDDxHhVJDzV0WEbk.jpg" alt="משחק 1">
             </div>
-            <div class="anti-stress-image">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/chatgpt-image-jul-4-2026-01_52_58-pm-EIJRUdY03lTW7xCk.png" alt="סדנת אנטי סטרס">
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=532,fit=crop/RkqaGW7CYBhWS6xy/xx-x-xx-xc-x-xxx-xxxxx-xxxxc-xxx-x-c-xxxxa-xxxc-xx-23.6.2026-fAymhtFfZssMo02v.jpeg" alt="משחק 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=513,fit=crop/RkqaGW7CYBhWS6xy/p60911-082300-krAlL3yvmeQlqXrZ.jpg" alt="משחק 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=531,fit=crop/RkqaGW7CYBhWS6xy/20201208_184128-s5QnUhnW242EmP2Y.jpg" alt="משחק 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/20201128_162843---copy-ltTFyZ6swZ7AqjPo.jpg" alt="משחק 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/20201203_122507---copy---copy-oWwvuCWrHmmRws9y.jpg" alt="משחק 6">
+            </div>
+            <div class="gallery-item">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/p60912-103233-1sXwtGMjNkJ5qmVb.jpg" alt="משחק 7">
             </div>
         </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>הביאו את האוקיינוס השקט אליכם</h2>
+        <p>העניקו לחברה שלכם חוויה יוצאת דופן,<br>המשלבת חוויות מקצה העולם,<br>עם סיפור השראה אישי יוצאת דופן,<br>וכלים פרקטיים וקלים להתמודדות עם הסטרס בחיי היומיום.</p>
+        <a href="contact.html" class="cta-button">תיאום הרצאה וסדנא חווייתית</a>
     </section>
 
     <footer class="footer">
