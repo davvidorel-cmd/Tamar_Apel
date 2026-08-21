@@ -658,11 +658,12 @@
                 tamarCard.classList.add('flipped');
             }, 800);
 
-            // Show question
+            // Show question and enable clicking
             setTimeout(() => {
                 questionDiv.textContent = 'מי הקלף הגבוה יותר? לחץ על המנצח!';
                 playerCardFront.style.cursor = 'pointer';
                 tamarCardFront.style.cursor = 'pointer';
+                isPlaying = false;
             }, 1200);
         }
 
