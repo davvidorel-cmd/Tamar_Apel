@@ -173,14 +173,21 @@
             cursor: pointer;
             transition: transform 0.3s;
             margin: 0 auto;
+            animation: pulse 2s infinite;
         }
 
         .deck:hover {
             transform: scale(1.05);
+            animation: none;
         }
 
         .deck:active {
             transform: scale(0.95);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
         }
 
         .deck-card {
@@ -616,6 +623,7 @@
         function playGame() {
             if (isPlaying) return;
             isPlaying = true;
+            deck.style.animation = 'none';
             
             resetCards();
 
@@ -701,11 +709,18 @@
                 return;
             }
 
+            // After correct answer, reset for next round
+            setTimeout(() => {
+                resultDiv.textContent = 'לחץ על החפיסה לסבב הבא';
+                resultDiv.className = 'result';
+            }, 1500);
+
             setTimeout(() => {
                 isPlaying = false;
                 currentPlayerCard = null;
                 currentTamarCard = null;
                 resetCards();
+                deck.style.animation = 'pulse 2s infinite';
             }, 2500);
         }
 
