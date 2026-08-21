@@ -100,10 +100,14 @@
         .level-badge {
             display: inline-block;
             background: var(--color-primary);
+            color: white;
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 14px;
             margin-bottom: 10px;
+            cursor: pointer;
+            border: none;
+            appearance: auto;
         }
 
         .instructions {
@@ -484,8 +488,12 @@
 
         <div class="game-header">
             <div class="game-info">
-                <div class="level-badge">רמה 1</div>
-                <p class="instructions">מי הקלף המנצח?</p>
+                <select class="level-badge" id="levelSelect" onchange="changeLevel()">
+                    <option value="1">רמה 1</option>
+                    <option value="addition">חיבור</option>
+                    <option value="subtraction">חיסור</option>
+                </select>
+                <p class="instructions" id="gameInstructions">מי הקלף המנצח?</p>
             </div>
         </div>
 
@@ -584,6 +592,23 @@
         const playerScoreEl = document.getElementById('playerScore');
         const tamarScoreEl = document.getElementById('tamarScore');
         const roundsEl = document.getElementById('rounds');
+        const levelSelect = document.getElementById('levelSelect');
+        const gameInstructions = document.getElementById('gameInstructions');
+
+        let currentLevel = '1';
+        let firstNumber = null;
+        let secondNumber = null;
+
+        function changeLevel() {
+            currentLevel = levelSelect.value;
+            if (currentLevel === '1') {
+                gameInstructions.textContent = 'מי הקלף המנצח?';
+            } else if (currentLevel === 'addition') {
+                gameInstructions.textContent = 'מה התוצאה של חיבור שני הקלפים?';
+            } else if (currentLevel === 'subtraction') {
+                gameInstructions.textContent = 'מה התוצאה של חיסור הקלף השני מהראשון?';
+            }
+        }
 
         function getCardValue(card) {
             return parseInt(card);
@@ -635,9 +660,11 @@
             currentPlayerCard = getRandomCard();
             currentTamarCard = getRandomCard();
             
-            // Ensure different card values
-            while (currentPlayerCard.value === currentTamarCard.value) {
-                currentTamarCard = getRandomCard();
+            // Ensure different card values for level 1
+            if (currentLevel === '1') {
+                while (currentPlayerCard.value === currentTamarCard.value) {
+                    currentTamarCard = getRandomCard();
+                }
             }
 
             // Animate deck
@@ -670,7 +697,13 @@
 
             // Show question and enable clicking
             setTimeout(() => {
-                questionDiv.textContent = 'מי הקלף המנצח?';
+                if (currentLevel === '1') {
+                    questionDiv.textContent = 'מי הקלף המנצח?';
+                } else if (currentLevel === 'addition') {
+                    questionDiv.textContent = 'מה התוצאה? לחץ על הקלף עם התוצאה הנכונה';
+                } else if (currentLevel === 'subtraction') {
+                    questionDiv.textContent = 'מה התוצאה? לחץ על הקלף עם התוצאה הנכונה';
+                }
                 playerCardFront.style.cursor = 'pointer';
                 tamarCardFront.style.cursor = 'pointer';
                 isPlaying = false;
@@ -691,21 +724,40 @@
 
             let isCorrect = false;
 
-            if (playerVal > tamarVal && selected === 'player') {
-                isCorrect = true;
-            } else if (tamarVal > playerVal && selected === 'tamar') {
-                isCorrect = true;
-            } else if (playerVal === tamarVal) {
-                resultDiv.textContent = '🤝 תיקו!';
-                resultDiv.className = 'result';
-                isCorrect = true;
+            if (currentLevel === '1') {
+                // Level 1: which card is higher
+                if (playerVal > tamarVal && selected === 'player') {
+                    isCorrect = true;
+                } else if (tamarVal > playerVal && selected === 'tamar') {
+                    isCorrect = true;
+                } else if (playerVal === tamarVal) {
+                    resultDiv.textContent = '🤝 תיקו!';
+                    resultDiv.className = 'result';
+                    isCorrect = true;
+                }
+            } else if (currentLevel === 'addition') {
+                // Addition: player's card should show the sum
+                const sum = playerVal + tamarVal;
+                if (playerVal === sum && selected === 'player') {
+                    isCorrect = true;
+                } else if (tamarVal === sum && selected === 'tamar') {
+                    isCorrect = true;
+                }
+            } else if (currentLevel === 'subtraction') {
+                // Subtraction: player's card should show the difference
+                const diff = Math.abs(playerVal - tamarVal);
+                if (playerVal === diff && selected === 'player') {
+                    isCorrect = true;
+                } else if (tamarVal === diff && selected === 'tamar') {
+                    isCorrect = true;
+                }
             }
 
             if (isCorrect) {
-                if (playerVal > tamarVal) {
+                if (selected === 'player') {
                     playerScore++;
                     playerScoreEl.textContent = playerScore;
-                } else if (tamarVal > playerVal) {
+                } else {
                     tamarScore++;
                     tamarScoreEl.textContent = tamarScore;
                 }
