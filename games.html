@@ -262,11 +262,51 @@
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
+                gap: 10px 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .content-section {
+                padding: 40px 15px;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .gallery-item-back h3 {
+                font-size: 1.4rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 8px 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .content-section {
+                padding: 30px 10px;
+            }
+
+            .gallery-item {
+                height: 300px;
             }
         }
     </style>

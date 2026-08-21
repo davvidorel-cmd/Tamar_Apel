@@ -273,11 +273,59 @@
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
+                gap: 10px 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .page-header {
+                padding: 40px 15px;
+            }
+
+            .content-section {
+                padding: 40px 15px;
+            }
+
+            .tracks-title h1 {
+                font-size: 1.8rem;
             }
 
             .tracks-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 8px 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .content-section {
+                padding: 30px 10px;
+            }
+
+            .tracks-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .track-card-content {
+                padding: 20px;
             }
         }
     </style>

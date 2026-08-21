@@ -258,15 +258,64 @@
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
+                gap: 10px 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .page-header {
+                padding: 50px 15px;
             }
 
             .page-header h1 {
                 font-size: 2rem;
             }
 
+            .content-section {
+                padding: 40px 15px;
+            }
+
             .contact-form {
                 padding: 25px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 8px 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .form-intro h2 {
+                font-size: 1.3rem;
+            }
+
+            .content-section {
+                padding: 30px 10px;
+            }
+
+            .contact-form {
+                padding: 20px 15px;
             }
         }
     </style>

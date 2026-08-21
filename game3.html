@@ -191,9 +191,77 @@
         }
 
         @media (max-width: 768px) {
-            .header-container { flex-direction: column; gap: 15px; }
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .game-hero h1 { font-size: 2rem; }
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 15px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .game-hero {
+                padding: 40px 15px;
+            }
+
+            .game-hero h1 {
+                font-size: 2rem;
+            }
+
+            .game-hero img {
+                max-height: 280px;
+            }
+
+            .game-content {
+                padding: 30px 15px;
+            }
+
+            .game-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .back-button {
+                text-align: center;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 8px 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .game-hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .game-hero img {
+                max-height: 220px;
+            }
+
+            .game-content {
+                padding: 25px 10px;
+            }
+
+            .game-content p,
+            .game-content ul li {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
