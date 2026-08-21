@@ -638,11 +638,11 @@
                 playerCard2.parentElement.style.display = 'none';
                 tamarCard2.parentElement.style.display = 'none';
             } else if (currentLevel === 'addition') {
-                gameInstructions.textContent = 'מי השחקן עם הסכום הגבוה יותר?';
+                gameInstructions.textContent = 'מה התוצאה המנצחת?';
                 playerCard2.parentElement.style.display = 'block';
                 tamarCard2.parentElement.style.display = 'block';
             } else if (currentLevel === 'subtraction') {
-                gameInstructions.textContent = 'מי השחקן עם ההפרש הגדול יותר?';
+                gameInstructions.textContent = 'מה התוצאה המנצחת?';
                 playerCard2.parentElement.style.display = 'block';
                 tamarCard2.parentElement.style.display = 'block';
             }
@@ -738,7 +738,7 @@
                 if (currentLevel === '1') {
                     questionDiv.textContent = 'מי הקלף המנצח?';
                 } else {
-                    questionDiv.textContent = 'מי השחקן עם התוצאה הגבוהה hơn?';
+                    questionDiv.textContent = 'מה התוצאה המנצחת?';
                 }
                 [playerCard1Front, playerCard2Front, tamarCard1Front, tamarCard2Front].forEach(f => {
                     f.style.cursor = 'pointer';
@@ -780,14 +780,28 @@
 
             let isCorrect = false;
 
-            if (playerResult > tamarResult && selected === 'player') {
-                isCorrect = true;
-            } else if (tamarResult > playerResult && selected === 'tamar') {
-                isCorrect = true;
-            } else if (playerResult === tamarResult) {
-                resultDiv.textContent = '🤝 תיקו!';
-                resultDiv.className = 'result';
-                isCorrect = true;
+            if (currentLevel === 'subtraction') {
+                // For subtraction, LOWER result wins
+                if (playerResult < tamarResult && selected === 'player') {
+                    isCorrect = true;
+                } else if (tamarResult < playerResult && selected === 'tamar') {
+                    isCorrect = true;
+                } else if (playerResult === tamarResult) {
+                    resultDiv.textContent = '🤝 תיקו!';
+                    resultDiv.className = 'result';
+                    isCorrect = true;
+                }
+            } else {
+                // For level 1 and addition, HIGHER result wins
+                if (playerResult > tamarResult && selected === 'player') {
+                    isCorrect = true;
+                } else if (tamarResult > playerResult && selected === 'tamar') {
+                    isCorrect = true;
+                } else if (playerResult === tamarResult) {
+                    resultDiv.textContent = '🤝 תיקו!';
+                    resultDiv.className = 'result';
+                    isCorrect = true;
+                }
             }
 
             if (isCorrect) {
