@@ -1,11 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#1a365d"/>
-  <rect x="50" y="30" width="120" height="180" rx="10" fill="#ffffff" stroke="#333" stroke-width="2"/>
-  <rect x="230" y="30" width="120" height="180" rx="10" fill="#ffffff" stroke="#333" stroke-width="2"/>
-  <text x="110" y="80" font-family="serif" font-size="40" fill="#000" text-anchor="middle">♠</text>
-  <text x="110" y="140" font-family="serif" font-size="24" fill="#000" text-anchor="middle">A</text>
-  <text x="290" y="80" font-family="serif" font-size="40" fill="#cc0000" text-anchor="middle">♥</text>
-  <text x="290" y="140" font-family="serif" font-size="24" fill="#cc0000" text-anchor="middle">K</text>
-  <rect x="100" y="230" width="200" height="40" rx="5" fill="#673de6"/>
-  <text x="200" y="257" font-family="sans-serif" font-size="18" fill="#fff" text-anchor="middle">Playing Cards</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 400 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <rect x="0" y="0" width="400" height="300" style="fill:rgb(26,54,93);"/>
+    <path d="M170,40C170,34.481 165.519,30 160,30L60,30C54.481,30 50,34.481 50,40L50,200C50,205.519 54.481,210 60,210L160,210C165.519,210 170,205.519 170,200L170,40Z" style="fill:white;stroke:rgb(51,51,51);stroke-width:2px;"/>
+    <path d="M350,40C350,34.481 345.519,30 340,30L240,30C234.481,30 230,34.481 230,40L230,200C230,205.519 234.481,210 240,210L340,210C345.519,210 350,205.519 350,200L350,40Z" style="fill:white;stroke:rgb(51,51,51);stroke-width:2px;"/>
+    <g transform="matrix(1,0,0,1,110,80)">
+        <text x="-20px" y="0px" style="font-family:'HiraginoSans-W5', 'Hiragino Sans', sans-serif;font-weight:500;font-size:40px;">♠</text>
+    </g>
+    <g transform="matrix(1,0,0,1,110,140)">
+        <g transform="matrix(30,0,0,30,8.34229,0)">
+        </g>
+        <text x="-8.342px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:30px;">9</text>
+    </g>
+    <g transform="matrix(1,0,0,1,290,80)">
+        <text x="-20px" y="0px" style="font-family:'HiraginoSans-W5', 'Hiragino Sans', sans-serif;font-weight:500;font-size:40px;fill:rgb(204,0,0);">♥</text>
+    </g>
+    <g transform="matrix(1,0,0,1,290,140)">
+        <g transform="matrix(24,0,0,24,7.58789,0)">
+        </g>
+        <text x="-7.588px" y="0px" style="font-family:'LucidaGrande', 'Lucida Grande', sans-serif;font-weight:500;font-size:24px;fill:rgb(204,0,0);fill-opacity:0.4;">4</text>
+    </g>
+    <g transform="matrix(1,0,0,1,200,257)">
+        <text x="-54.07px" y="0px" style="font-family:'LucidaGrande', 'Lucida Grande', sans-serif;font-weight:500;font-size:18px;fill:white;">כיף</text>
+        <text x="-23.634px" y="0px" style="font-family:'LucidaGrande', 'Lucida Grande', sans-serif;font-weight:500;font-size:18px;fill:white;">של</text>
+        <text x="3.858px" y="0px" style="font-family:'LucidaGrande', 'Lucida Grande', sans-serif;font-weight:500;font-size:18px;fill:white;">קלפים</text>
+    </g>
 </svg>
