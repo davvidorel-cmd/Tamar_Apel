@@ -96,26 +96,75 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 30px;
         }
 
         .gallery-item {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            height: 350px;
+            perspective: 1000px;
+            cursor: pointer;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-item img {
+        .gallery-item-inner {
+            position: relative;
             width: 100%;
-            height: 300px;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .gallery-item:hover .gallery-item-inner {
+            transform: rotateY(180deg);
+        }
+
+        .gallery-item-front,
+        .gallery-item-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-item-front {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f2847;
+        }
+
+        .gallery-item-front img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            display: block;
+        }
+
+        .gallery-item-back {
+            background: #ffffff;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .gallery-item-back h3 {
+            font-family: 'Spectral', serif;
+            font-size: 1.8rem;
+            color: var(--color-dark);
+            margin-bottom: 15px;
+        }
+
+        .gallery-item-back p {
+            color: var(--color-gray);
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .cta-section {
@@ -251,25 +300,37 @@
     <section class="content-section">
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/20201207_113718-GDDxHhVJDzV0WEbk.jpg" alt="משחק 1">
+                <div class="gallery-item-inner">
+                    <div class="gallery-item-front">
+                        <img src="https://images.unsplash.com/photo-1541750479287-003f90b426d6?w=800&h=600&fit=crop" alt="משחק מלחמה">
+                    </div>
+                    <div class="gallery-item-back">
+                        <h3>משחק מלחמה</h3>
+                        <p>החוקים: נצח את תמר לפי ההנחיות בכל רמה ורמה</p>
+                    </div>
+                </div>
             </div>
             <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=532,fit=crop/RkqaGW7CYBhWS6xy/xx-x-xx-xc-x-xxx-xxxxx-xxxxc-xxx-x-c-xxxxa-xxxc-xx-23.6.2026-fAymhtFfZssMo02v.jpeg" alt="משחק 2">
+                <div class="gallery-item-inner">
+                    <div class="gallery-item-front">
+                        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=532,fit=crop/RkqaGW7CYBhWS6xy/xx-x-xx-xc-x-xxx-xxxxx-xxxxc-xxx-x-c-xxxxa-xxxc-xx-23.6.2026-fAymhtFfZssMo02v.jpeg" alt="משחק 2">
+                    </div>
+                    <div class="gallery-item-back">
+                        <h3>משחק 2</h3>
+                        <p>תיאור המשחק השני</p>
+                    </div>
+                </div>
             </div>
             <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=513,fit=crop/RkqaGW7CYBhWS6xy/p60911-082300-krAlL3yvmeQlqXrZ.jpg" alt="משחק 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=531,fit=crop/RkqaGW7CYBhWS6xy/20201208_184128-s5QnUhnW242EmP2Y.jpg" alt="משחק 4">
-            </div>
-            <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/20201128_162843---copy-ltTFyZ6swZ7AqjPo.jpg" alt="משחק 5">
-            </div>
-            <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/20201203_122507---copy---copy-oWwvuCWrHmmRws9y.jpg" alt="משחק 6">
-            </div>
-            <div class="gallery-item">
-                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=512,fit=crop/RkqaGW7CYBhWS6xy/p60912-103233-1sXwtGMjNkJ5qmVb.jpg" alt="משחק 7">
+                <div class="gallery-item-inner">
+                    <div class="gallery-item-front">
+                        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=513,fit=crop/RkqaGW7CYBhWS6xy/p60911-082300-krAlL3yvmeQlqXrZ.jpg" alt="משחק 3">
+                    </div>
+                    <div class="gallery-item-back">
+                        <h3>משחק 3</h3>
+                        <p>תיאור המשחק השלישי</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
