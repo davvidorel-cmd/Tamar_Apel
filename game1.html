@@ -495,7 +495,7 @@
                 <div class="score-value" id="playerScore">0</div>
             </div>
             <div class="score-item">
-                <div class="score-label">תורות</div>
+                <div class="score-label">תור</div>
                 <div class="score-value" id="rounds">0</div>
             </div>
             <div class="score-item">
@@ -634,6 +634,11 @@
 
             currentPlayerCard = getRandomCard();
             currentTamarCard = getRandomCard();
+            
+            // Ensure different card values
+            while (currentPlayerCard.value === currentTamarCard.value) {
+                currentTamarCard = getRandomCard();
+            }
 
             // Animate deck
             deck.style.transform = 'scale(0.9)';
@@ -708,7 +713,7 @@
                 resultDiv.className = 'result success';
                 createConfetti();
             } else {
-                resultDiv.textContent = '🤔 בדוק שוב';
+                resultDiv.textContent = 'נבדוק שוב 🤔';
                 resultDiv.className = 'result try-again';
                 playerCardFront.style.cursor = 'pointer';
                 tamarCardFront.style.cursor = 'pointer';
