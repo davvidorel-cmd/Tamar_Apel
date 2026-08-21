@@ -241,6 +241,12 @@
             position: relative;
         }
 
+        .cards-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
         .card {
             width: 100%;
             height: 100%;
@@ -516,11 +522,21 @@
             <div class="player">
                 <div class="player-avatar">👤</div>
                 <div class="player-name">אני</div>
-                <div class="card-slot">
-                    <div class="card" id="playerCard">
-                        <div class="card-face card-back"></div>
-                        <div class="card-face card-front" id="playerCardFront">
-                            <span class="card-number">?</span>
+                <div class="cards-row">
+                    <div class="card-slot">
+                        <div class="card" id="playerCard1">
+                            <div class="card-face card-back"></div>
+                            <div class="card-face card-front" id="playerCard1Front">
+                                <span class="card-number">?</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-slot">
+                        <div class="card" id="playerCard2">
+                            <div class="card-face card-back"></div>
+                            <div class="card-face card-front" id="playerCard2Front">
+                                <span class="card-number">?</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -538,11 +554,21 @@
             <div class="player">
                 <div class="player-avatar tamar">👩</div>
                 <div class="player-name">תמר</div>
-                <div class="card-slot">
-                    <div class="card" id="tamarCard">
-                        <div class="card-face card-back"></div>
-                        <div class="card-face card-front" id="tamarCardFront">
-                            <span class="card-number">?</span>
+                <div class="cards-row">
+                    <div class="card-slot">
+                        <div class="card" id="tamarCard1">
+                            <div class="card-face card-back"></div>
+                            <div class="card-face card-front" id="tamarCard1Front">
+                                <span class="card-number">?</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-slot">
+                        <div class="card" id="tamarCard2">
+                            <div class="card-face card-back"></div>
+                            <div class="card-face card-front" id="tamarCard2Front">
+                                <span class="card-number">?</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -579,14 +605,18 @@
         let tamarScore = 0;
         let rounds = 0;
         let isPlaying = false;
-        let currentPlayerCard = null;
-        let currentTamarCard = null;
+        let playerCards = [];
+        let tamarCards = [];
 
         const deck = document.getElementById('deck');
-        const playerCard = document.getElementById('playerCard');
-        const tamarCard = document.getElementById('tamarCard');
-        const playerCardFront = document.getElementById('playerCardFront');
-        const tamarCardFront = document.getElementById('tamarCardFront');
+        const playerCard1 = document.getElementById('playerCard1');
+        const playerCard2 = document.getElementById('playerCard2');
+        const tamarCard1 = document.getElementById('tamarCard1');
+        const tamarCard2 = document.getElementById('tamarCard2');
+        const playerCard1Front = document.getElementById('playerCard1Front');
+        const playerCard2Front = document.getElementById('playerCard2Front');
+        const tamarCard1Front = document.getElementById('tamarCard1Front');
+        const tamarCard2Front = document.getElementById('tamarCard2Front');
         const questionDiv = document.getElementById('question');
         const resultDiv = document.getElementById('result');
         const playerScoreEl = document.getElementById('playerScore');
@@ -596,17 +626,15 @@
         const gameInstructions = document.getElementById('gameInstructions');
 
         let currentLevel = '1';
-        let firstNumber = null;
-        let secondNumber = null;
 
         function changeLevel() {
             currentLevel = levelSelect.value;
             if (currentLevel === '1') {
                 gameInstructions.textContent = 'מי הקלף המנצח?';
             } else if (currentLevel === 'addition') {
-                gameInstructions.textContent = 'מה התוצאה של חיבור שני הקלפים?';
+                gameInstructions.textContent = 'מי השחקן עם הסכום הגבוה יותר?';
             } else if (currentLevel === 'subtraction') {
-                gameInstructions.textContent = 'מה התוצאה של חיסור הקלף השני מהראשון?';
+                gameInstructions.textContent = 'מי השחקן עם ההפרש הגדול יותר?';
             }
         }
 
@@ -622,14 +650,13 @@
         }
 
         function resetCards() {
-            playerCard.classList.remove('flipped');
-            tamarCard.classList.remove('flipped');
-            playerCardFront.querySelector('.card-number').textContent = '?';
-            playerCardFront.querySelector('.card-suit')?.remove();
-            playerCardFront.className = 'card-face card-front';
-            tamarCardFront.querySelector('.card-number').textContent = '?';
-            tamarCardFront.querySelector('.card-suit')?.remove();
-            tamarCardFront.className = 'card-face card-front';
+            [playerCard1, playerCard2, tamarCard1, tamarCard2].forEach(c => c.classList.remove('flipped'));
+            [playerCard1Front, playerCard2Front, tamarCard1Front, tamarCard2Front].forEach(front => {
+                front.querySelector('.card-number').textContent = '?';
+                front.querySelector('.card-suit')?.remove();
+                front.className = 'card-face card-front';
+                front.style.cursor = 'default';
+            });
             questionDiv.textContent = '';
             resultDiv.textContent = '';
             resultDiv.className = 'result';
@@ -650,6 +677,18 @@
             }
         }
 
+        function flipCard(frontEl, card, delay) {
+            setTimeout(() => {
+                frontEl.querySelector('.card-number').textContent = card.value;
+                const suitSpan = document.createElement('span');
+                suitSpan.className = 'card-suit';
+                suitSpan.textContent = card.suit;
+                frontEl.appendChild(suitSpan);
+                frontEl.classList.add('red', card.isRed);
+                card.parentElement.classList.add('flipped');
+            }, delay);
+        }
+
         function playGame() {
             if (isPlaying) return;
             isPlaying = true;
@@ -657,100 +696,84 @@
             
             resetCards();
 
-            currentPlayerCard = getRandomCard();
-            currentTamarCard = getRandomCard();
-            
-            // Ensure different card values for level 1
-            if (currentLevel === '1') {
-                while (currentPlayerCard.value === currentTamarCard.value) {
-                    currentTamarCard = getRandomCard();
-                }
+            const numCards = currentLevel === '1' ? 1 : 2;
+
+            playerCards = [];
+            tamarCards = [];
+            for (let i = 0; i < numCards; i++) {
+                playerCards.push(getRandomCard());
+                tamarCards.push(getRandomCard());
             }
 
-            // Animate deck
             deck.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 deck.style.transform = 'scale(1)';
             }, 150);
 
-            // Flip player card
-            setTimeout(() => {
-                playerCardFront.querySelector('.card-number').textContent = currentPlayerCard.value;
-                const suitSpan = document.createElement('span');
-                suitSpan.className = 'card-suit';
-                suitSpan.textContent = currentPlayerCard.suit;
-                playerCardFront.appendChild(suitSpan);
-                playerCardFront.classList.add('red', currentPlayerCard.isRed);
-                playerCard.classList.add('flipped');
-            }, 400);
+            if (numCards === 1) {
+                flipCard(playerCard1Front, playerCards[0], 400);
+                flipCard(tamarCard1Front, tamarCards[0], 800);
+            } else {
+                flipCard(playerCard1Front, playerCards[0], 400);
+                flipCard(playerCard2Front, playerCards[1], 600);
+                flipCard(tamarCard1Front, tamarCards[0], 800);
+                flipCard(tamarCard2Front, tamarCards[1], 1000);
+            }
 
-            // Flip tamar card
-            setTimeout(() => {
-                tamarCardFront.querySelector('.card-number').textContent = currentTamarCard.value;
-                const suitSpan = document.createElement('span');
-                suitSpan.className = 'card-suit';
-                suitSpan.textContent = currentTamarCard.suit;
-                tamarCardFront.appendChild(suitSpan);
-                tamarCardFront.classList.add('red', currentTamarCard.isRed);
-                tamarCard.classList.add('flipped');
-            }, 800);
-
-            // Show question and enable clicking
             setTimeout(() => {
                 if (currentLevel === '1') {
                     questionDiv.textContent = 'מי הקלף המנצח?';
-                } else if (currentLevel === 'addition') {
-                    questionDiv.textContent = 'מה התוצאה? לחץ על הקלף עם התוצאה הנכונה';
-                } else if (currentLevel === 'subtraction') {
-                    questionDiv.textContent = 'מה התוצאה? לחץ על הקלף עם התוצאה הנכונה';
+                } else {
+                    questionDiv.textContent = 'מי השחקן עם התוצאה הגבוהה hơn?';
                 }
-                playerCardFront.style.cursor = 'pointer';
-                tamarCardFront.style.cursor = 'pointer';
+                [playerCard1Front, playerCard2Front, tamarCard1Front, tamarCard2Front].forEach(f => {
+                    f.style.cursor = 'pointer';
+                });
                 isPlaying = false;
-            }, 1200);
+            }, numCards === 1 ? 1200 : 1400);
+        }
+
+        function getPlayerTotal() {
+            return playerCards.reduce((sum, c) => sum + getCardValue(c.value), 0);
+        }
+
+        function getTamarTotal() {
+            return tamarCards.reduce((sum, c) => sum + getCardValue(c.value), 0);
         }
 
         function checkAnswer(selected) {
-            if (!currentPlayerCard || !currentTamarCard) return;
+            if (playerCards.length === 0 || tamarCards.length === 0) return;
 
-            const playerVal = getCardValue(currentPlayerCard.value);
-            const tamarVal = getCardValue(currentTamarCard.value);
-
-            playerCardFront.style.cursor = 'default';
-            tamarCardFront.style.cursor = 'default';
+            [playerCard1Front, playerCard2Front, tamarCard1Front, tamarCard2Front].forEach(f => {
+                f.style.cursor = 'default';
+            });
 
             rounds++;
             roundsEl.textContent = rounds;
 
-            let isCorrect = false;
+            let playerResult, tamarResult;
 
             if (currentLevel === '1') {
-                // Level 1: which card is higher
-                if (playerVal > tamarVal && selected === 'player') {
-                    isCorrect = true;
-                } else if (tamarVal > playerVal && selected === 'tamar') {
-                    isCorrect = true;
-                } else if (playerVal === tamarVal) {
-                    resultDiv.textContent = '🤝 תיקו!';
-                    resultDiv.className = 'result';
-                    isCorrect = true;
-                }
+                playerResult = getCardValue(playerCards[0].value);
+                tamarResult = getCardValue(tamarCards[0].value);
             } else if (currentLevel === 'addition') {
-                // Addition: player's card should show the sum
-                const sum = playerVal + tamarVal;
-                if (playerVal === sum && selected === 'player') {
-                    isCorrect = true;
-                } else if (tamarVal === sum && selected === 'tamar') {
-                    isCorrect = true;
-                }
-            } else if (currentLevel === 'subtraction') {
-                // Subtraction: player's card should show the difference
-                const diff = Math.abs(playerVal - tamarVal);
-                if (playerVal === diff && selected === 'player') {
-                    isCorrect = true;
-                } else if (tamarVal === diff && selected === 'tamar') {
-                    isCorrect = true;
-                }
+                playerResult = getPlayerTotal();
+                tamarResult = getTamarTotal();
+            } else {
+                playerResult = Math.abs(getCardValue(playerCards[0].value) - getCardValue(playerCards[1].value));
+                tamarResult = Math.abs(getCardValue(tamarCards[0].value) - getCardValue(tamarCards[1].value));
+            }
+
+            let isCorrect = false;
+
+            if (playerResult > tamarResult && selected === 'player') {
+                isCorrect = true;
+            } else if (tamarResult > playerResult && selected === 'tamar') {
+                isCorrect = true;
+            } else if (playerResult === tamarResult) {
+                resultDiv.textContent = '🤝 תיקו!';
+                resultDiv.className = 'result';
+                isCorrect = true;
             }
 
             if (isCorrect) {
@@ -767,12 +790,12 @@
             } else {
                 resultDiv.textContent = 'נבדוק שוב 🤔';
                 resultDiv.className = 'result try-again';
-                playerCardFront.style.cursor = 'pointer';
-                tamarCardFront.style.cursor = 'pointer';
+                [playerCard1Front, playerCard2Front, tamarCard1Front, tamarCard2Front].forEach(f => {
+                    f.style.cursor = 'pointer';
+                });
                 return;
             }
 
-            // After correct answer, reset for next round
             setTimeout(() => {
                 resultDiv.textContent = 'לחץ על החפיסה לסבב הבא';
                 resultDiv.className = 'result';
@@ -780,8 +803,8 @@
 
             setTimeout(() => {
                 isPlaying = false;
-                currentPlayerCard = null;
-                currentTamarCard = null;
+                playerCards = [];
+                tamarCards = [];
                 resetCards();
                 deck.style.animation = 'pulse 2s infinite';
             }, 2500);
@@ -789,12 +812,16 @@
 
         deck.addEventListener('click', playGame);
 
-        playerCardFront.addEventListener('click', () => {
-            if (!isPlaying && currentPlayerCard) checkAnswer('player');
+        [playerCard1Front, playerCard2Front].forEach(front => {
+            front.addEventListener('click', () => {
+                if (!isPlaying && playerCards.length > 0) checkAnswer('player');
+            });
         });
 
-        tamarCardFront.addEventListener('click', () => {
-            if (!isPlaying && currentTamarCard) checkAnswer('tamar');
+        [tamarCard1Front, tamarCard2Front].forEach(front => {
+            front.addEventListener('click', () => {
+                if (!isPlaying && tamarCards.length > 0) checkAnswer('tamar');
+            });
         });
     </script>
 </body>
