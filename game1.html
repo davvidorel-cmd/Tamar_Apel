@@ -342,6 +342,11 @@
             animation: shake 0.5s ease-in-out;
         }
 
+        .result.try-again {
+            color: orange;
+            font-weight: bold;
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-10px); }
@@ -480,7 +485,7 @@
         <div class="game-header">
             <div class="game-info">
                 <div class="level-badge">רמה 1</div>
-                <p class="instructions">מי הקלף הגבוה יותר? לחץ על הקלף המנצח!</p>
+                <p class="instructions">מי הקלף המנצח?</p>
             </div>
         </div>
 
@@ -660,7 +665,7 @@
 
             // Show question and enable clicking
             setTimeout(() => {
-                questionDiv.textContent = 'מי הקלף הגבוה יותר? לחץ על המנצח!';
+                questionDiv.textContent = 'מי הקלף המנצח?';
                 playerCardFront.style.cursor = 'pointer';
                 tamarCardFront.style.cursor = 'pointer';
                 isPlaying = false;
@@ -703,8 +708,8 @@
                 resultDiv.className = 'result success';
                 createConfetti();
             } else {
-                resultDiv.textContent = '❌ לא נכון, בדוק שוב!';
-                resultDiv.className = 'result error';
+                resultDiv.textContent = 'בדיקה חוזרת...';
+                resultDiv.className = 'result try-again';
                 playerCardFront.style.cursor = 'pointer';
                 tamarCardFront.style.cursor = 'pointer';
                 return;
