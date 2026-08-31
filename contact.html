@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>יצירת קשר | האוקיינוס השקט שבתוכנו</title>
+    <title>יצירת קשר | מספרים פשוטים</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400&family=Sora:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -348,40 +348,35 @@
         </div>
     </header>
 
-    <section class="page-header">
-        <h1>מביאים את <em>האוקיינוס השקט</em> אליכם</h1>
-        <p>העניקו לחברה שלכם ארוע יוצא דופן,<br>המשלב חוויות, שלווה ויופי מקצה העולם,<br>עם סיפור השראה אישי יוצאת דופן,<br>ועם כלים פרקטיים וקלים להתמודדות עם הסטרס בחיי היומיום.</p>
-    </section>
-
     <section class="content-section">
         <div class="form-intro">
-            <h2>צוות, 2 דקות להפלגה...<br>בואו נתכנן יחד את הפעילות שלכם</h2>
-            <p>מלאו את הפרטים ונחזור אליכם בהקדם<br>עם הצעה מותאמת לצרכי הארגון שלכם</p>
+            <h2>ילדים שמצליחים בחשבון ממוקמים חברתית גבוה בכיתה. בואו נתכנן יחד את הדרך של הילדים שלכם להצלחה</h2>
+            <p>מלאו פרטים וספרו מה הייתם רוצים ואחזור אליכם</p>
         </div>
 
         <div class="contact-form">
             <form action="https://formspree.io/f/mwlkvqvq" method="POST">
                 <div class="form-group">
                     <label>שם <span class="required">*</span></label>
-                    <input type="text" name="name-role" required>
+                    <input type="text" name="name-role" required oninvalid="this.setCustomValidity('זה שדה חשוב')" oninput="this.setCustomValidity('')">
                 </div>
 
                 <div class="form-group">
                     <label>אימייל <span class="required">*</span></label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" required oninvalid="this.setCustomValidity(this.value ? 'נראה שהמייל עדיין לא מדוייק' : 'נראה שהמייל לא תקין')" oninput="if(this.validity.typeMismatch){this.setCustomValidity('נראה שהמייל עדיין לא מדוייק')}else if(!this.value){this.setCustomValidity('נראה שהמייל לא תקין')}else{this.setCustomValidity('')}">
                 </div>
 
                 <div class="form-group">
-                    <label>טלפון / וואטסאפ ליצירת קשר</label>
-                    <input type="tel" name="phone">
+                    <label>טלפון / וואטסאפ ליצירת קשר <span class="required">*</span></label>
+                    <input type="tel" name="phone" inputmode="numeric" pattern="[0-9]*" required oninvalid="this.setCustomValidity('זהו שדה חשוב')" oninput="this.value=this.value.replace(/[^0-9]/g,'');this.setCustomValidity('')">
                 </div>
 
                 <div class="form-group">
-                    <label>פרטים שחשוב שאדע <span class="required">*</span></label>
-                    <textarea name="event-details" required></textarea>
+                    <label>פרטים שחשוב שאדע</label>
+                    <textarea name="event-details"></textarea>
                 </div>
 
-                <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - האוקיינוס השקט">
+                <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - מספרים פשוטים">
                 <input type="hidden" name="_language" value="he">
 
                 <button type="submit" class="submit-button">שליחת בקשה</button>
@@ -392,7 +387,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>האוקיינוס השקט שבתוכנו</h3>
+                <h3>מספרים פשוטים</h3>
                 <p>הרצאות העשרה וסדנאות אנטי סטרס</p>
                 <p>לארגונים וחברות</p>
             </div>
@@ -403,7 +398,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 האוקיינוס השקט שבתוכנו - הרצאות העשרה וסדנאות אנטי סטרס לארגונים וחברות
+            © 2026 מספרים פשוטים - הרצאות העשרה וסדנאות אנטי סטרס לארגונים וחברות
         </div>
     </footer>
 </body>
