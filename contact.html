@@ -360,26 +360,29 @@
         </div>
 
         <div class="contact-form">
-            <form>
+            <form action="https://formspree.io/f/mwlkvqvq" method="POST">
                 <div class="form-group">
-                    <label>שם ותפקיד <span class="required">*</span></label>
-                    <input type="text" required>
+                    <label>שם <span class="required">*</span></label>
+                    <input type="text" name="name-role" required>
                 </div>
 
                 <div class="form-group">
-                    <label>אימייל ארגוני <span class="required">*</span></label>
-                    <input type="email" required>
+                    <label>אימייל <span class="required">*</span></label>
+                    <input type="email" name="email" required>
                 </div>
 
                 <div class="form-group">
                     <label>טלפון / וואטסאפ ליצירת קשר</label>
-                    <input type="tel">
+                    <input type="tel" name="phone">
                 </div>
 
                 <div class="form-group">
-                    <label>פרטים על האירוע (החברה/הארגון שלכם, תאריך משוער, הערכת מספר משתתפים) <span class="required">*</span></label>
-                    <textarea required></textarea>
+                    <label>פרטים שחשוב שאדע <span class="required">*</span></label>
+                    <textarea name="event-details" required></textarea>
                 </div>
+
+                <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - האוקיינוס השקט">
+                <input type="hidden" name="_language" value="he">
 
                 <button type="submit" class="submit-button">שליחת בקשה</button>
             </form>
