@@ -142,6 +142,17 @@
             margin-top: 6px;
         }
 
+        .prize-note {
+            background: linear-gradient(135deg, #1c6ea4 0%, #2b8cbe 100%);
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 10px 18px;
+            border-radius: 12px;
+            max-width: 340px;
+            margin: 0 auto 10px;
+        }
+
         .back-button {
             position: absolute;
             left: 20px;
@@ -618,6 +629,7 @@
                     <button type="button" class="level-btn" data-level="addition" onclick="changeLevel('addition')">חיבור</button>
                     <button type="button" class="level-btn" data-level="subtraction" onclick="changeLevel('subtraction')">חיסור</button>
                 </div>
+                <p class="prize-note">נצח את תמר בשתי רמות לפחות וזכה בחבילת קלפים אישית מתמר</p>
                 <p class="instructions" id="gameInstructions">מי הקלף הגדול יותר?</p>
                 <p class="parent-note">הורים - אם הילד קטן, כדאי להקריא ולהסביר לו את החוקים</p>
             </div>
@@ -751,6 +763,7 @@
         const gameInstructions = document.getElementById('gameInstructions');
 
         let currentLevel = '1';
+        const wonLevels = new Set();
 
         // Hide second cards on load (level 1 is default)
         playerCard2.parentElement.style.display = 'none';
@@ -995,6 +1008,16 @@
                         resultDiv.textContent = '🏆 ניצחון! ניצחת את תמר! 🏆';
                         resultDiv.className = 'result success';
                         deck.style.animation = 'none';
+
+                        const alreadyWon = wonLevels.has(currentLevel);
+                        wonLevels.add(currentLevel);
+                        if (!alreadyWon) {
+                            if (wonLevels.size >= 2) {
+                                setTimeout(() => alert('כל הכבוד! ניצחת את תמר בשתי רמות ואף יותר. זכית בחבילת קלפים אישית מתמר!'), 300);
+                            } else {
+                                setTimeout(() => alert('מעולה, ניצחת אותי ברמה הזו. עלייך לנצח בעוד רמה אחת כדי לזכות בחבילת הקלפים'), 300);
+                            }
+                        }
                     }, 1500);
                     return;
                 }

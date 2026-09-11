@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>דף הבית | מספרים פשוטים - הרצאות העשרה וסדנת אנטי סטרס</title>
+    <title>דף הבית | מספרים פשוטים - מתמטיקה בגישה הומניסטית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400&family=Sora:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -173,6 +173,145 @@
             font-size: 1.1rem;
         }
 
+        .approach-section {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .approach-section h2 {
+            font-family: 'Spectral', serif;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .approach-section p {
+            color: #b0c4de;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .quote-block {
+            background: #0f2847;
+            border-radius: 15px;
+            padding: 32px 34px;
+            margin: 40px auto 0;
+            max-width: 700px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-right: 4px solid var(--color-primary);
+        }
+
+        .quote-block p {
+            color: #d6e2f2;
+            font-size: 1.25rem;
+            font-style: italic;
+            font-family: 'Spectral', serif;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .quote-block span {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.95rem;
+            font-style: normal;
+            color: #8fa8c7;
+        }
+
+        .benefits-section {
+            background-color: #0f2847;
+            padding: 70px 20px;
+        }
+
+        .benefits-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .benefits-inner > h2 {
+            font-family: 'Spectral', serif;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .benefit-card h3 {
+            font-family: 'Spectral', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            color: #b0c4de;
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        .explore-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .explore-section h2 {
+            font-family: 'Spectral', serif;
+            font-size: 2rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .explore-card {
+            background-color: #0f2847;
+            border-radius: 15px;
+            padding: 35px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .explore-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        .explore-card h3 {
+            font-family: 'Spectral', serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 14px;
+        }
+
+        .explore-card p {
+            color: #b0c4de;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .explore-card .card-link {
+            color: var(--color-primary);
+            font-size: 0.95rem;
+        }
+
         footer {
             background-color: #0a1628;
             color: #ffffff;
@@ -270,6 +409,21 @@
                 gap: 30px;
                 text-align: center;
             }
+
+            .approach-section h2,
+            .benefits-inner > h2,
+            .explore-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .benefits-grid,
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-block p {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -292,6 +446,12 @@
 
             nav a {
                 font-size: 12px;
+            }
+
+            .approach-section,
+            .benefits-section,
+            .explore-section {
+                padding: 45px 15px;
             }
         }
     </style>
@@ -325,29 +485,77 @@
     </header>
 
     <section class="hero">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/RkqaGW7CYBhWS6xy/yp3qux-b0Aarrt78rvHdxbV.png" alt="Background" class="hero-image">
         <div class="hero-content">
-            <h1>מספרים פשוטים...</h1>
-            <p><strong>הרצאות העשרה והשראה</strong> לבחירתכם</p>
-            <p>על מקומות ואיים קסומים בקצה העולם</p>
-            <p>ועל התגברות על קשיים ואתגרים בחיים</p>
-            <p>ניתן לשלב <strong>סדנת אנטי סטרס</strong> קלה ונעימה</p>
-            <p>מותאם במיוחד לארגונים וחברות</p>
-            <a href="contact.html" class="cta-button">לתיאום הרצאה לארגון שלכם</a>
+            <h1>מספרים פשוטים</h1>
+            <p><strong>מתמטיקה בגישה הומניסטית</strong> — כי כל ילד יכול להצליח</p>
+            <p>שיטת הוראה שמתרגמת מתמטיקה לשפתו האישית של כל תלמיד, ומחזירה לילדים את הביטחון וההנאה מהמספרים</p>
+            <a href="tracks.html" class="cta-button">להכיר את הגישה</a>
+        </div>
+    </section>
+
+    <section class="approach-section">
+        <h2>מתמטיקה היא שפה. אבל קודם כול — היא שיחה</h2>
+        <p>הגישה ההומניסטית שפיתחה תמר אפל-קמפו רואה בכל ילד יכולת אמיתית להצליח במתמטיקה. במקום שיטה אחידה לכל הכיתה, ההוראה מותאמת לסגנון הלמידה האישי של כל תלמיד — כך שגם ילדים ש"שונאים מתמטיקה" מגלים בפתע שהם "עושים מתמטיקה" בהצלחה, בכיתה ומחוצה לה.</p>
+        <p>מאחורי הגישה עומדים למעלה משלושים שנות מחקר והוראה, כלי אבחון ייעודי ("משוחחים חשבון"), וסדרת ספרים ללימוד — כולם נבנו מתוך אמונה אחת: כולם יכולים להצליח במתמטיקה.</p>
+        <div class="quote-block">
+            <p>"המתמטיקה היא שפה. אבל קודם כול — היא שיחה."
+            <span>— תמר אפל</span></p>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="benefits-inner">
+            <h2>למה ילדים מצליחים בגישה הזו</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>למידה מותאמת אישית</h3>
+                    <p>תכנון דיפרנציאלי והערכה דינמית שמתחשבים באופן שבו כל ילד באמת חושב ולומד.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>חוויה חיובית ומעצימה</h3>
+                    <p>במקום פחד ותסכול — סקרנות, ביטחון עצמי והנאה אמיתית מהמפגש עם מספרים.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>ליווי למורים ולהורים</h3>
+                    <p>הכשרות, אבחונים וחומרי הוראה שמסייעים גם למבוגרים המלווים את הילד בדרך.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="explore-section">
+        <h2>המשיכו לגלות</h2>
+        <div class="explore-grid">
+            <a href="about.html" class="explore-card">
+                <h3>מי היא תמר</h3>
+                <p>אשת חינוך, חוקרת ומרצה בינלאומית — מייסדת המרכז להוראת מתמטיקה בגישה הומניסטית משנת 1987.</p>
+                <span class="card-link">לקרוא עוד ←</span>
+            </a>
+            <a href="tracks.html" class="explore-card">
+                <h3>הספר "מספרים פשוטים"</h3>
+                <p>מסע אל לב המתמטיקה — לתלמידים, הורים ומורים שמאמינים שאפשר אחרת.</p>
+                <span class="card-link">להכיר את הספר ←</span>
+            </a>
+            <a href="games.html" class="explore-card">
+                <h3>משחקים ללימוד מתמטיקה</h3>
+                <p>משחקים אינטראקטיביים שהופכים תרגול חיבור וחיסור לחוויה מהנה ומשחקית.</p>
+                <span class="card-link">לשחק עכשיו ←</span>
+            </a>
         </div>
     </section>
 
     <section class="cta-section">
-        <h2>מוכנים להביא את מספרים פשוטים לארגון שלכם?</h2>
-        <p>צרו קשר לתיאום הרצאת השראה או סדנה מותאמת אישית לצוות שלכם.<br>נשמח לתכנן יחד אתכם את האירוע הבא שלכם.</p>
+        <h2>מוכנים להתחיל את המסע?</h2>
+        <p>צרו קשר לשיחה על הגישה ההומניסטית ואיך היא יכולה לעזור לילד שלכם, לכיתה שלכם או לכם עצמכם.</p>
+        <a href="contact.html" class="cta-button">יצירת קשר</a>
     </section>
 
     <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>מספרים פשוטים</h3>
-                <p>הרצאות העשרה וסדנאות אנטי סטרס</p>
-                <p>לארגונים וחברות</p>
+                <p>מתמטיקה בגישה הומניסטית</p>
+                <p>לילדים, הורים ומורים</p>
             </div>
             <div class="footer-section">
                 <h3>צור קשר</h3>
@@ -356,7 +564,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 מספרים פשוטים - הרצאות העשרה וסדנאות אנטי סטרס לארגונים וחברות
+            © 2026 מספרים פשוטים - מתמטיקה בגישה הומניסטית
         </div>
     </footer>
 </body>
