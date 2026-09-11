@@ -102,17 +102,30 @@
             text-align: center;
         }
 
-        .level-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #1c6ea4 0%, #2b8cbe 100%);
-            color: white;
+        .level-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .level-btn {
+            background: transparent;
+            color: #2b8cbe;
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 14px;
-            margin-bottom: 10px;
             cursor: pointer;
-            border: none;
-            appearance: auto;
+            border: 2px solid #2b8cbe;
+            font-family: inherit;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .level-btn.active {
+            background: linear-gradient(135deg, #1c6ea4 0%, #2b8cbe 100%);
+            color: white;
+            border-color: transparent;
         }
 
         .instructions {
@@ -528,7 +541,10 @@
             .score-value {
                 font-size: 20px;
             }
-            .level-badge {
+            .level-buttons {
+                gap: 6px;
+            }
+            .level-btn {
                 padding: 6px 15px;
                 font-size: 13px;
             }
@@ -597,11 +613,11 @@
 
         <div class="game-header">
             <div class="game-info">
-                <select class="level-badge" id="levelSelect" onchange="changeLevel()">
-                    <option value="1">קלף 1</option>
-                    <option value="addition">חיבור</option>
-                    <option value="subtraction">חיסור</option>
-                </select>
+                <div class="level-buttons" id="levelButtons">
+                    <button type="button" class="level-btn active" data-level="1" onclick="changeLevel('1')">קלף 1</button>
+                    <button type="button" class="level-btn" data-level="addition" onclick="changeLevel('addition')">חיבור</button>
+                    <button type="button" class="level-btn" data-level="subtraction" onclick="changeLevel('subtraction')">חיסור</button>
+                </div>
                 <p class="instructions" id="gameInstructions">מי הקלף הגדול יותר?</p>
                 <p class="parent-note">הורים - אם הילד קטן, כדאי להקריא ולהסביר לו את החוקים</p>
             </div>
@@ -731,7 +747,7 @@
         const playerScoreEl = document.getElementById('playerScore');
         const tamarScoreEl = document.getElementById('tamarScore');
         const roundsEl = document.getElementById('rounds');
-        const levelSelect = document.getElementById('levelSelect');
+        const levelButtons = document.querySelectorAll('.level-btn');
         const gameInstructions = document.getElementById('gameInstructions');
 
         let currentLevel = '1';
@@ -740,8 +756,11 @@
         playerCard2.parentElement.style.display = 'none';
         tamarCard2.parentElement.style.display = 'none';
 
-        function changeLevel() {
-            currentLevel = levelSelect.value;
+        function changeLevel(level) {
+            currentLevel = level;
+            levelButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.level === level);
+            });
 
             // Reset any active round so the deck is immediately clickable
             isPlaying = false;
