@@ -41,10 +41,27 @@
 
         .promo-bar {
             background-color: var(--color-primary-light);
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
+            padding: 12px 0;
+            font-size: 16px;
             color: var(--color-gray);
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .promo-bar .marquee-text {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            direction: rtl;
+            transform: translateY(-50%) translateX(100%);
+            animation: promo-marquee 32s linear infinite;
+        }
+
+        @keyframes promo-marquee {
+            from { transform: translateY(-50%) translateX(100%); }
+            to { transform: translateY(-50%) translateX(-100vw); }
         }
 
         header {
@@ -337,9 +354,7 @@
     </style>
 </head>
 <body>
-    <div class="promo-bar">
-        Add your promotional text...
-    </div>
+    <div class="promo-bar"><span class="marquee-text">לתאום הדרכה אישית מעמיקה על דרך ההוראה צרו עימי קשר</span></div>
 
     <header>
         <div class="header-container">
