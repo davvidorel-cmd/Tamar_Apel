@@ -6,16 +6,20 @@
     <title>גלרייה | מספרים פשוטים</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400&family=Sora:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Sora:wght@400;600&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #673de6;
+            --color-primary: #7c5cf0;
             --color-primary-dark: #5025d1;
-            --color-primary-light: #ebe4ff;
+            --color-primary-light: #d9ceff;
             --color-dark: #1d1e20;
             --color-gray: #727586;
             --color-gray-light: #f2f3f6;
             --color-light: #f7f4fc;
+            --color-bg: #0a1628;
+            --color-bg-card: #0f2847;
+            --color-text: #e8ecf4;
+            --color-text-muted: #b0c4de;
         }
 
         * {
@@ -26,8 +30,12 @@
 
         body {
             font-family: 'Sora', 'Roboto', sans-serif;
-            background-color: var(--color-light);
-            color: var(--color-dark);
+            background-color: var(--color-bg);
+            background-image:
+                radial-gradient(ellipse 900px 500px at 15% 0%, rgba(124, 92, 240, 0.16), transparent 60%),
+                radial-gradient(ellipse 700px 500px at 100% 30%, rgba(124, 92, 240, 0.1), transparent 60%);
+            background-attachment: fixed;
+            color: var(--color-text);
             line-height: 1.6;
         }
 
@@ -103,7 +111,7 @@
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             transition: transform 0.3s;
         }
 

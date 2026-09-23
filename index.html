@@ -6,16 +6,20 @@
     <title>דף הבית | מספרים פשוטים - מתמטיקה בגישה הומניסטית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400&family=Sora:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Sora:wght@400;600&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #673de6;
+            --color-primary: #7c5cf0;
             --color-primary-dark: #5025d1;
-            --color-primary-light: #ebe4ff;
+            --color-primary-light: #d9ceff;
             --color-dark: #1d1e20;
             --color-gray: #727586;
             --color-gray-light: #f2f3f6;
             --color-light: #f7f4fc;
+            --color-bg: #0a1628;
+            --color-bg-card: #0f2847;
+            --color-text: #e8ecf4;
+            --color-text-muted: #b0c4de;
         }
 
         * {
@@ -26,8 +30,12 @@
 
         body {
             font-family: 'Sora', 'Roboto', sans-serif;
-            background-color: var(--color-light);
-            color: var(--color-dark);
+            background-color: var(--color-bg);
+            background-image:
+                radial-gradient(ellipse 900px 500px at 15% 0%, rgba(124, 92, 240, 0.16), transparent 60%),
+                radial-gradient(ellipse 700px 500px at 100% 30%, rgba(124, 92, 240, 0.1), transparent 60%);
+            background-attachment: fixed;
+            color: var(--color-text);
             line-height: 1.6;
         }
 
@@ -183,12 +191,12 @@
         .approach-section h2 {
             font-family: 'Spectral', serif;
             font-size: 2rem;
-            color: var(--color-primary-dark);
+            color: #ffffff;
             margin-bottom: 20px;
         }
 
         .approach-section p {
-            color: var(--color-dark);
+            color: var(--color-text-muted);
             font-size: 1.1rem;
             line-height: 1.9;
             margin-bottom: 18px;
@@ -271,7 +279,7 @@
         .explore-section h2 {
             font-family: 'Spectral', serif;
             font-size: 2rem;
-            color: var(--color-primary-dark);
+            color: #ffffff;
             text-align: center;
             margin-bottom: 45px;
         }
@@ -491,8 +499,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>מספרים פשוטים</h1>
-            <p><strong>מתמטיקה בגישה הומניסטית</strong> — כי כל ילד יכול להצליח</p>
-            <p>שיטת הוראה שמתרגמת מתמטיקה לשפתו האישית של כל תלמיד, ומחזירה לילדים את הביטחון וההנאה מהמספרים</p>
+            <p><strong>מתמטיקה בגישה הומניסטית</strong> — דרך הוראה נעימה ומעניינת שמבטיחה הצלחה למורה ולתלמיד בקלות והנאה</p>
         </div>
     </section>
 
@@ -537,7 +544,7 @@
             </a>
             <a href="tracks.html" class="explore-card">
                 <h3>הספר "מספרים פשוטים"</h3>
-                <p>מסע אל לב המתמטיקה — לתלמידים, הורים ומורים שמאמינים שאפשר אחרת.</p>
+                <p>מסע מרתק ואפשרי להצלחה בלימודי מתמטיקה — לתלמידים, הורים ומורים שמאמינים שאפשר אחרת.</p>
                 <span class="card-link">להכיר את הספר ←</span>
             </a>
             <a href="games.html" class="explore-card">

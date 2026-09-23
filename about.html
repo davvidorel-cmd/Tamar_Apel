@@ -6,16 +6,20 @@
     <title>אודות תמר | מספרים פשוטים</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400&family=Sora:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Sora:wght@400;600&family=Roboto:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #673de6;
+            --color-primary: #7c5cf0;
             --color-primary-dark: #5025d1;
-            --color-primary-light: #ebe4ff;
+            --color-primary-light: #d9ceff;
             --color-dark: #1d1e20;
             --color-gray: #727586;
             --color-gray-light: #f2f3f6;
             --color-light: #f7f4fc;
+            --color-bg: #0a1628;
+            --color-bg-card: #0f2847;
+            --color-text: #e8ecf4;
+            --color-text-muted: #b0c4de;
         }
 
         * {
@@ -26,8 +30,12 @@
 
         body {
             font-family: 'Sora', 'Roboto', sans-serif;
-            background-color: var(--color-light);
-            color: var(--color-dark);
+            background-color: var(--color-bg);
+            background-image:
+                radial-gradient(ellipse 900px 500px at 15% 0%, rgba(124, 92, 240, 0.16), transparent 60%),
+                radial-gradient(ellipse 700px 500px at 100% 30%, rgba(124, 92, 240, 0.1), transparent 60%);
+            background-attachment: fixed;
+            color: var(--color-text);
             line-height: 1.6;
         }
 
@@ -108,43 +116,67 @@
         }
 
         .content-section {
-            max-width: 780px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 70px 20px;
         }
 
         .about-section {
-            margin-bottom: 46px;
+            background: var(--color-bg-card);
+            border-radius: 18px;
+            padding: 38px 42px;
+            margin-bottom: 30px;
+            border-right: 4px solid var(--color-primary);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+            opacity: 0;
+            transform: translateY(16px);
+            animation: rise 0.7s ease forwards;
+        }
+
+        .about-section:nth-child(1) { animation-delay: 0.05s; }
+        .about-section:nth-child(2) { animation-delay: 0.15s; }
+        .about-section:nth-child(3) { animation-delay: 0.25s; }
+        .about-section:nth-child(4) { animation-delay: 0.35s; }
+        .about-section:nth-child(5) { animation-delay: 0.45s; }
+
+        @keyframes rise {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .about-section h2 {
             font-family: 'Spectral', serif;
+            font-weight: 600;
             font-size: 1.7rem;
-            color: var(--color-primary-dark);
+            color: #ffffff;
             margin-bottom: 16px;
         }
 
         .about-section p {
-            color: var(--color-dark);
+            color: var(--color-text-muted);
             font-size: 1.05rem;
             line-height: 1.9;
             margin-bottom: 14px;
         }
 
         .about-section ul {
-            color: var(--color-dark);
+            color: var(--color-text-muted);
             font-size: 1.05rem;
             line-height: 1.9;
             padding-right: 22px;
         }
 
+        .about-section ul strong {
+            color: var(--color-text);
+        }
+
         .about-section .lead {
             font-size: 1.15rem;
-            color: var(--color-dark);
+            color: var(--color-primary-light);
+            font-style: italic;
         }
 
         .quote-block {
-            background: #0f2847;
+            background: linear-gradient(135deg, #0f2847 0%, #17335e 100%);
             border-radius: 15px;
             padding: 32px 34px;
             margin: 50px 0;
@@ -346,6 +378,11 @@
             <h2>נעים להכיר</h2>
             <p>אחרי שנים רבות של הוראה, ריכוז מתמטיקה בבתי ספר ותפקידי הדרכה מחוזית וארצית, ייסדה תמר את המרכז למתמטיקה בגישה הומניסטית. מאז 1987 היא מובילה חזון חינוכי שמעמיד את האדם במרכז הלמידה ומציע אלטרנטיבה עמוקה לדרך שבה מלמדים מתמטיקה.</p>
             <p class="lead">התפיסה והכלים המעשיים שפיתחה מובילים תלמידים ומורים כאחד להצלחה.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>שמתי לי למטרה</h2>
+            <p>להבטיח שהאפשרות להצליח בלימודי מתמטיקה מוכרת לכולם. שהורים יוכלו לדעת מה עליהם לעשות כדי שעולמם של התלמידים שלהם יהיה עולם בטוח ונעים לגדול ולהתפתח בו. שהורים יוכלו לדעת שאם הילד/ה סובלים מלימודי מתמטיקה יש פתרון פשוט למצוקתם. חשוב להפיץ את הבשורה.</p>
         </div>
 
         <div class="about-section">
